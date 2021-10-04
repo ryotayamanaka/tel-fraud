@@ -1,0 +1,23 @@
+CREATE PROPERTY GRAPH "telfraud"
+  VERTEX TABLES (
+    telfraud.customer
+      KEY (cst_id)
+      LABEL customer
+      PROPERTIES (cst_id, first_name, last_name)
+  , telfraud.account
+      KEY (acc_id)
+      LABEL account
+      PROPERTIES (acc_id, tel_number, is_suspect, is_victim)
+  )
+  EDGE TABLES (
+    telfraud.transaction
+      KEY (txn_id)
+      SOURCE KEY(acc_id_src) REFERENCES account
+      DESTINATION KEY(acc_id_dst) REFERENCES account
+      LABEL transferred_to
+  , telfraud.account
+      KEY (acc_id)
+      SOURCE KEY(cst_id) REFERENCES customer
+      DESTINATION KEY(acc_id) REFERENCES account
+      LABEL owns
+  )
