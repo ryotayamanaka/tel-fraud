@@ -86,16 +86,16 @@ Exit from the `DBCS`.
 
 Then start a client shell instance that connects to the server
 
-    $ opgpy --base_url https://localhost:7007 --user moneyflows
+    $ opgpy --base_url https://localhost:7007 --user telfraud
     enter password for user moneyflows (press Enter for no password): WELcome123##
-    Oracle Graph Server Shell 21.1.0
+    Oracle Graph Server Shell 21.3.0
     >>>
 
 Set the create property graph statement.
 
 [`create-pg.pgql`](../script/create-pg.pgql)
 
-    >>> statement = open('/home/opc/moneyflows/script/create-pg.pgql', 'r').read()
+    >>> statement = open('/home/opc/telfraud/script/create-pg.pgql', 'r').read()
 
 Run the statement.
 
@@ -104,7 +104,7 @@ Run the statement.
 
 Get the created graph and try a PGQL query.
 
-    >>> graph = session.get_graph("Moneyflows")
+    >>> graph = session.get_graph("telfraud")
     >>> graph
     PgxGraph(name: Moneyflows, v: 180, e: 3100, directed: True, memory(Mb): 0)
     >>> graph.query_pgql("""
